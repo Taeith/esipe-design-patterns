@@ -22,7 +22,7 @@ public abstract class AbstractFigure implements Figure {
 		int yB = this.y + (height / 2);
 		return Math.sqrt((xB - xA)*(xB - xA) + (yB - yA)*(yB - yA));
 	}
-	
+
 	@Override
 	public String toString() {
 		return "[x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + "]";

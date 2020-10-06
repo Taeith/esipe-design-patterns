@@ -7,21 +7,15 @@ public class Container {
 	private ArrayList<Figure> figures = new ArrayList<>();
 	private int highlighted;
 	
-	public Container() {
-		this.figures = new ArrayList<>();
+	public Container(ArrayList<Figure> figures) {
+		this.figures = figures;
 		this.highlighted = Integer.MIN_VALUE;
 	}
 	
-	public void add(Figure figure) {
-		figures.add(figure);
-	}
-	
-	public Figure get(int index) {
-		return figures.get(index);
-	}
-	
-	public int size() {
-		return figures.size();
+	public void drawAll(Canvas canvas, Canvas.Color color) {
+		for (Figure figure : figures) {
+			figure.draw(canvas, color);
+		}
 	}
 	
 	private int getClosestTo(int x, int y) {

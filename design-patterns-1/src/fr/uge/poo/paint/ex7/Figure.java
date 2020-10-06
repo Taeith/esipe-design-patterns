@@ -6,4 +6,12 @@ public interface Figure {
 	
 	public double distanceFrom(int x, int y);
 	
+	public int getX();
+	
+	public int getY();
+	
+	public int getWidth();
+	
+	public int getHeight();
+	
 }

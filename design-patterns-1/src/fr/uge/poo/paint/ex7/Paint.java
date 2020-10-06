@@ -2,8 +2,8 @@ package fr.uge.poo.paint.ex7;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,17 +34,16 @@ public class Paint {
 		return null;
 	}
 	
-	public static void drawFile(Canvas canvas, Container container) {
-		Path path = Paths.get(System.getProperty("user.dir") + "/src/fr/uge/poo/simplegraphics/figures.txt");
-		try (Stream<String> fileStream = Files.lines(path)) {
+	public static ArrayList<Figure> readFile(String path) {
+		ArrayList<Figure> figures = new ArrayList<>();
+		try (Stream<String> fileStream = Files.lines(Paths.get(System.getProperty("user.dir") + path))) {
 			for (String line : fileStream.collect(Collectors.toList())) {
-				Figure figure = readFigure(line);
-				figure.draw(canvas, Canvas.Color.BLACK);
-				container.add(figure);
+				figures.add(readFigure(line));
 			}
 		} catch(IOException exception) {
 			throw new AssertionError();
-		}		
+		}
+		return figures;
 	}
 	
 	private static void callback(Canvas canvas, Container container, int x, int y) {
@@ -63,9 +62,9 @@ public class Paint {
 		} else {
 			canvas = new CoolGraphicsAdaptateur();
 		}
-		Container container = new Container();
+		Container container = new Container(readFile("/src/fr/uge/poo/simplegraphics/figures.txt"));
 		canvas.clear(Canvas.Color.WHITE);
-		drawFile(canvas, container);
+		container.drawAll(canvas, Canvas.Color.BLACK);
 		final Canvas canvas2 = canvas;
         canvas.waitOnClick((x, y) -> callback(canvas2, container, x, y));
 	}

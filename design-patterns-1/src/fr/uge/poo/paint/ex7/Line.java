@@ -1,7 +1,5 @@
 package fr.uge.poo.paint.ex7;
 
-import java.awt.Graphics2D;
-
 public class Line implements Figure {
 	
 	private int x1;
@@ -28,6 +26,26 @@ public class Line implements Figure {
 		int xB = (x1 + x2) / 2;
 		int yB = (y1 + y2) / 2;
 		return Math.sqrt((xB - xA)*(xB - xA) + (yB - yA)*(yB - yA));
+	}
+	
+	@Override
+	public int getX() {
+		return x1;
+	}
+	
+	@Override
+	public int getY() {
+		return y1;
+	}
+	
+	@Override
+	public int getWidth() {
+		return x2 - x1;
+	}
+	
+	@Override
+	public int getHeight() {
+		return y2 - y1;
 	}
 
 	@Override

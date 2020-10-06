@@ -22,6 +22,26 @@ public abstract class AbstractFigure implements Figure {
 		int yB = this.y + (height / 2);
 		return Math.sqrt((xB - xA)*(xB - xA) + (yB - yA)*(yB - yA));
 	}
+	
+	@Override
+	public int getX() {
+		return this.x;
+	}
+	
+	@Override
+	public int getY() {
+		return this.y;
+	}
+	
+	@Override
+	public int getWidth() {
+		return this.width;
+	}
+	
+	@Override
+	public int getHeight() {
+		return this.height;
+	}
 
 	@Override
 	public String toString() {
